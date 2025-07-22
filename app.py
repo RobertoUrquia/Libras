@@ -1,9 +1,11 @@
 from flask import Flask, request, jsonify
 import joblib
 import numpy as np
+from flask_cors import CORS  # ← Agregado
 
 app = Flask(__name__)
 modelo = joblib.load('modelo_libras_a_kg.pkl')
+CORS(app)
 
 @app.route('/predecir', methods=['POST'])
 def predecir():
